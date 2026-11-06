@@ -1,6 +1,17 @@
-# Agentic Browser Workspace
+# THESUS
 
-A local FastAPI workspace for supervising an agent in Chromium. The agent and the browser viewport operate on one live page in the selected branch. Take control to use the page directly, then return it so the agent can inspect what changed. SQLite records the conversation, decisions, and checkpoints.
+**Agentic Browser Workspace**
+
+Share one live Chromium page with an agent. Give it a task, take over when you need to act, and hand control back so it can see what changed. The workspace runs locally on FastAPI and records conversations, decisions, and checkpoints in SQLite.
+
+[Start on Windows](#start-on-windows) · [Run the guided demo](#demonstrate-without-model-credentials) · [Run tasks together](#run-tasks-together) · [Architecture](ARCHITECTURE.md) · [Preview the project site](#project-site)
+
+<details>
+<summary>Watch the browser handoff (animated GIF)</summary>
+
+![The agent opens a reservation form, hands control to the operator, and verifies the confirmation after control returns.](docs/pages/assets/handoff.gif)
+
+</details>
 
 ## Start on Windows
 
@@ -103,4 +114,16 @@ Use one Uvicorn worker with persistent local volumes for SQLite and the profiles
 See [architecture](ARCHITECTURE.md), [research and selection](docs/research.md), [validation](docs/validation.md), and [optimization](docs/optimization.md) for operating constraints, test procedures, and measurements.
 
 The [adversarial audit](docs/adversarial-audit.md) documents the corrected control, snapshot and recovery cases, along with the remaining security boundary for unattended authenticated sites.
+
+## Project site
+
+Preview the interactive handoff from the project directory.
+
+```sh
+python -m http.server 4173 --bind 127.0.0.1 --directory docs/pages
+```
+
+Open [the project site preview](http://127.0.0.1:4173/).
+
+To publish, choose **GitHub Actions** as the source under **Settings → Pages**. Once the workflow is on the default branch, run **Publish project site** from the **Actions** tab. The workflow publishes only `docs/pages`.
 
