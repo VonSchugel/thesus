@@ -1,6 +1,48 @@
-# Agentic Browser Workspace
+# THESUS
 
-A local FastAPI workspace for supervising an agent in Chromium. The agent and the browser viewport operate on one live page in the selected branch. Take control to use the page directly, then return it so the agent can inspect what changed. SQLite records the conversation, decisions, and checkpoints.
+**One browser. Shared control.**
+
+THESUS is a local workspace for supervising an agent in Chromium. You and the agent work in the same live browser, with approval for sensitive actions and a SQLite history of decisions and checkpoints. THESUS also supports [evidence-backed artifact investigations](#investigate-an-authorized-artifact).
+
+[Quick start](#start-on-windows) · [Guided demo](#demonstrate-without-model-credentials) · [Project tree](#project-tree) · [Architecture](ARCHITECTURE.md)
+
+## The handoff
+
+1. **Agent opens the form.** Watch it navigate to the sample reservation page.
+2. **You take over.** Enter a sample name and submit in the shared browser.
+3. **Agent verifies.** Return control so the agent can check the confirmation on the same page.
+
+<details>
+<summary>Preview the handoff</summary>
+
+[![The sample reservation form while the operator controls the shared browser.](docs/pages/assets/handoff-poster.png)](docs/pages/assets/handoff.gif?raw=true)
+
+[Play the 9-second GIF](docs/pages/assets/handoff.gif?raw=true)
+
+</details>
+
+## Project tree
+
+```text
+thesus/
+├── main.py                  # Launch the local workspace
+├── app/
+│   ├── agents/              # Task planning and model providers
+│   ├── api/                 # Session, control, and event routes
+│   ├── core/                # Orchestration, browser handoff, and replay
+│   ├── db/                  # SQLite models and persistence
+│   ├── integrations/
+│   │   └── browser/         # Chromium adapter and network policy
+│   ├── models/              # Shared data contracts
+│   ├── reverse_engineering/ # Artifact analysis and evidence
+│   └── ui/                  # Browser viewport and workspace controls
+├── scripts/                 # Guided demos and benchmarks
+├── tests/                   # Browser, approval, and recovery tests
+├── docs/                    # Research and validation reports
+└── ARCHITECTURE.md          # System diagrams and API flows
+```
+
+[Browser adapter](app/integrations/browser/playwright_adapter.py) · [Control lock](app/core/control_lock.py) · [Workspace UI](app/ui/) · [Validation](docs/validation.md)
 
 ## Start on Windows
 
@@ -103,4 +145,3 @@ Use one Uvicorn worker with persistent local volumes for SQLite and the profiles
 See [architecture](ARCHITECTURE.md), [research and selection](docs/research.md), [validation](docs/validation.md), and [optimization](docs/optimization.md) for operating constraints, test procedures, and measurements.
 
 The [adversarial audit](docs/adversarial-audit.md) documents the corrected control, snapshot and recovery cases, along with the remaining security boundary for unattended authenticated sites.
-
