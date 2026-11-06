@@ -1,17 +1,48 @@
 # THESUS
 
-**Agentic Browser Workspace**
+**One browser. Shared control.**
 
-Share one live Chromium page with an agent. Give it a task, take over when you need to act, and hand control back so it can see what changed. The workspace runs locally on FastAPI and records conversations, decisions, and checkpoints in SQLite.
+THESUS is a local workspace for supervising an agent in Chromium. You and the agent work in the same live browser, with approval for sensitive actions and a SQLite history of decisions and checkpoints. THESUS also supports [evidence-backed artifact investigations](#investigate-an-authorized-artifact).
 
-[Start on Windows](#start-on-windows) · [Run the guided demo](#demonstrate-without-model-credentials) · [Run tasks together](#run-tasks-together) · [Architecture](ARCHITECTURE.md) · [Preview the project site](#project-site)
+[Quick start](#start-on-windows) · [Guided demo](#demonstrate-without-model-credentials) · [Project tree](#project-tree) · [Architecture](ARCHITECTURE.md)
+
+## The handoff
+
+1. **Agent opens the form.** Watch it navigate to the sample reservation page.
+2. **You take over.** Enter a sample name and submit in the shared browser.
+3. **Agent verifies.** Return control so the agent can check the confirmation on the same page.
 
 <details>
-<summary>Watch the browser handoff (animated GIF)</summary>
+<summary>Preview the handoff</summary>
 
-![The agent opens a reservation form, hands control to the operator, and verifies the confirmation after control returns.](docs/pages/assets/handoff.gif)
+[![The sample reservation form while the operator controls the shared browser.](docs/pages/assets/handoff-poster.png)](docs/pages/assets/handoff.gif?raw=true)
+
+[Play the 9-second GIF](docs/pages/assets/handoff.gif?raw=true)
 
 </details>
+
+## Project tree
+
+```text
+thesus/
+├── main.py                  # Launch the local workspace
+├── app/
+│   ├── agents/              # Task planning and model providers
+│   ├── api/                 # Session, control, and event routes
+│   ├── core/                # Orchestration, browser handoff, and replay
+│   ├── db/                  # SQLite models and persistence
+│   ├── integrations/
+│   │   └── browser/         # Chromium adapter and network policy
+│   ├── models/              # Shared data contracts
+│   ├── reverse_engineering/ # Artifact analysis and evidence
+│   └── ui/                  # Browser viewport and workspace controls
+├── scripts/                 # Guided demos and benchmarks
+├── tests/                   # Browser, approval, and recovery tests
+├── docs/                    # Research and validation reports
+└── ARCHITECTURE.md          # System diagrams and API flows
+```
+
+[Browser adapter](app/integrations/browser/playwright_adapter.py) · [Control lock](app/core/control_lock.py) · [Workspace UI](app/ui/) · [Validation](docs/validation.md)
 
 ## Start on Windows
 
