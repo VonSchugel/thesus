@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="420" viewBox="0 0 440 420" role="img" aria-labelledby="title desc">
+  <title id="title">THESUS — One browser. Shared control.</title>
+  <desc id="desc">Graphite and lime banner with a reservation form showing that you have taken control.</desc>
+  <defs>
+    <pattern id="dots" width="14" height="14" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#414c43"/>
+    </pattern>
+  </defs>
+  <rect x=".5" y=".5" width="439" height="419" rx="14" fill="#111413" stroke="#333b36"/>
+  <g font-family="Consolas, Menlo, monospace" font-size="12" font-weight="600" letter-spacing=".75" fill="#aeb8b0">
+    <rect x="23" y="22" width="24" height="24" rx="5" fill="#c6f66a"/>
+    <path d="M29 29h12m-6 0v11m-3-3 3 3 3-3" fill="none" stroke="#111413" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="56" y="38" fill="#f1f3ec">THESUS</text>
+    <text x="119" y="38" fill="#626e65">/</text>
+    <text x="136" y="38">AGENTIC BROWSER WORKSPACE</text>
+    <circle cx="26" cy="191" r="3" fill="#c6f66a"/>
+    <text x="36" y="195" fill="#f1f3ec">HANDOFF PREVIEW</text>
+    <text x="416" y="195" text-anchor="end">02 / 03</text>
+  </g>
+  <g font-family="system-ui, Segoe UI, sans-serif">
+    <g font-size="48" font-weight="700" letter-spacing="-3.3">
+      <text x="20" y="96" fill="#f1f3ec">One browser.</text>
+      <text x="20" y="145" fill="#c6f66a">Shared control.</text>
+    </g>
+  </g>
+  <rect x="22.5" y="206.5" width="395" height="190" rx="8" fill="#171b19" stroke="#333b36"/>
+  <g fill="#59645d">
+    <circle cx="34" cy="223" r="2.5"/>
+    <circle cx="42" cy="223" r="2.5"/>
+    <circle cx="50" cy="223" r="2.5"/>
+  </g>
+  <rect x="60.5" y="213.5" width="298" height="19" rx="3" fill="#101512" stroke="#333b36"/>
+  <rect x="366.5" y="213.5" width="43" height="19" rx="3" fill="#28241a" stroke="#695332"/>
+  <circle cx="375" cy="223" r="2" fill="#f6d39a"/>
+  <g font-family="Consolas, Menlo, monospace" font-size="11">
+    <text x="67" y="227" fill="#aeb8b0">127.0.0.1:8001/reservation</text>
+    <text x="382" y="227" font-weight="700" fill="#f6d39a">You</text>
+  </g>
+  <path d="M23 239h394v123H23z" fill="#212923"/>
+  <path d="M23 239h394v123H23z" fill="url(#dots)"/>
+  <path d="M23 239.5h394M23 362.5h394" fill="none" stroke="#333b36"/>
+  <rect x="34" y="249" width="372" height="103" rx="5" fill="#edf0e8"/>
+  <text x="46" y="269" font-family="Consolas, Menlo, monospace" font-size="11" font-weight="700" letter-spacing=".6" fill="#465347">SAMPLE WORKSHOP</text>
+  <g font-family="system-ui, Segoe UI, sans-serif" fill="#151b16">
+    <text x="46" y="292" font-size="20" font-weight="700" letter-spacing="-.6">Reservation details</text>
+    <text x="46" y="310" font-size="11" font-weight="650">Sample attendee name</text>
+    <rect x="46.5" y="316.5" width="346" height="24" rx="4" fill="#fbfcf7" stroke="#a1ab9e"/>
+    <text x="55" y="333" font-size="12">Ada Lovelace</text>
+  </g>
+  <g font-family="Consolas, Menlo, monospace" font-size="10" fill="#aeb8b0">
+    <circle cx="36" cy="380" r="3" fill="#c6f66a"/>
+    <text x="44" y="384">Agent opened form</text>
+    <circle cx="165" cy="380" r="3" fill="#c6f66a"/>
+    <text x="173" y="384" fill="#c6f66a">You took control</text>
+    <circle cx="294" cy="380" r="3" fill="none" stroke="#89978c"/>
+    <text x="302" y="384">Agent verifies</text>
+  </g>
+</svg>
