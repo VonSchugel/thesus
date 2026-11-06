@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="344" viewBox="0 0 1040 344" role="img" aria-labelledby="title desc">
+  <title id="title">THESUS — One browser. Shared control.</title>
+  <desc id="desc">Graphite and lime banner with a reservation form and a trace showing the handoff from agent to human.</desc>
+  <defs>
+    <pattern id="dots" width="14" height="14" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#414c43"/>
+    </pattern>
+  </defs>
+  <rect x=".5" y=".5" width="1039" height="343" rx="14" fill="#111413" stroke="#333b36"/>
+  <g font-family="Consolas, Menlo, monospace" font-size="13" font-weight="600" letter-spacing="1" fill="#aeb8b0">
+    <rect x="38" y="33" width="26" height="26" rx="5" fill="#c6f66a"/>
+    <path d="M44 41h14m-7 0v11m-3-3 3 3 3-3" fill="none" stroke="#111413" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="75" y="51" fill="#f1f3ec">THESUS</text>
+    <text x="148" y="51" fill="#626e65">/</text>
+    <text x="167" y="51">AGENTIC BROWSER WORKSPACE</text>
+    <text x="40" y="300">RUNS LOCALLY<tspan fill="#c6f66a"> / </tspan>CHROMIUM + SQLITE</text>
+  </g>
+  <g font-family="system-ui, Segoe UI, sans-serif" fill="#f1f3ec">
+    <g font-size="62" font-weight="700" letter-spacing="-4.4">
+      <text x="35" y="133">One browser.</text>
+      <text x="35" y="199" fill="#c6f66a">Shared control.</text>
+    </g>
+    <text x="40" y="242" font-size="19" fill="#c0c9c1">Work in the same live Chromium page as your agent.</text>
+    <text x="40" y="268" font-size="19" fill="#c0c9c1">Step in, act, then hand back control.</text>
+  </g>
+
+  <g font-family="Consolas, Menlo, monospace" font-size="13" font-weight="600" letter-spacing=".9">
+    <circle cx="508" cy="48" r="3.5" fill="#c6f66a"/>
+    <text x="520" y="52" fill="#f1f3ec">HANDOFF PREVIEW</text>
+    <text x="1002" y="52" text-anchor="end" fill="#aeb8b0">02 / 03</text>
+  </g>
+  <rect x="502.5" y="69.5" width="499" height="235" rx="10" fill="#171b19" stroke="#333b36"/>
+  <g fill="#59645d">
+    <circle cx="518" cy="90" r="3"/>
+    <circle cx="527" cy="90" r="3"/>
+    <circle cx="536" cy="90" r="3"/>
+  </g>
+  <rect x="548.5" y="79.5" width="372" height="21" rx="4" fill="#101512" stroke="#333b36"/>
+  <rect x="930.5" y="79.5" width="61" height="21" rx="4" fill="#28241a" stroke="#695332"/>
+  <circle cx="941" cy="90" r="2.5" fill="#f6d39a"/>
+  <g font-family="Consolas, Menlo, monospace" font-size="12" fill="#aeb8b0">
+    <text x="557" y="94">127.0.0.1:8001/reservation</text>
+    <text x="950" y="94" font-weight="700" fill="#f6d39a">You</text>
+  </g>
+  <path d="M503 109h350v158H503z" fill="#212923"/>
+  <path d="M503 109h350v158H503z" fill="url(#dots)"/>
+  <path d="M503 109.5h498M503 267.5h498M853.5 110v157" fill="none" stroke="#333b36"/>
+  <rect x="518" y="125" width="320" height="127" rx="6" fill="#edf0e8"/>
+  <text x="532" y="147" font-family="Consolas, Menlo, monospace" font-size="11" font-weight="700" letter-spacing=".8" fill="#465347">SAMPLE WORKSHOP</text>
+  <g font-family="system-ui, Segoe UI, sans-serif" fill="#151b16">
+    <text x="532" y="174" font-size="22" font-weight="700" letter-spacing="-.7">Reservation details</text>
+    <text x="532" y="196" font-size="12" font-weight="650">Sample attendee name</text>
+    <rect x="532.5" y="205.5" width="289" height="26" rx="4" fill="#fbfcf7" stroke="#a1ab9e"/>
+    <text x="541" y="222" font-size="13">Ada Lovelace</text>
+  </g>
+  <text x="869" y="132" font-family="Consolas, Menlo, monospace" font-size="11" letter-spacing=".6" fill="#aeb8b0">SESSION TRACE</text>
+  <path d="M873 153v53" stroke="#536057"/>
+  <circle cx="873" cy="153" r="3.5" fill="#c6f66a"/>
+  <circle cx="873" cy="179" r="7" fill="#c6f66a" opacity=".18"/>
+  <circle cx="873" cy="179" r="3.5" fill="#c6f66a"/>
+  <circle cx="873" cy="205" r="3.5" fill="#171b19" stroke="#89978c"/>
+  <g font-family="system-ui, Segoe UI, sans-serif" font-size="12" fill="#aeb8b0">
+    <text x="885" y="157">Agent opened form</text>
+    <text x="885" y="183" fill="#c6f66a">You took control</text>
+    <text x="885" y="209">Agent verifies</text>
+    <text x="517" y="290">Your turn. Submit the sample reservation.</text>
+  </g>
+  <text x="990" y="290" text-anchor="end" font-family="Consolas, Menlo, monospace" font-size="11" fill="#f6d39a">MANUAL CONTROL</text>
+</svg>

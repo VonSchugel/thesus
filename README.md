@@ -1,10 +1,32 @@
 # THESUS
 
-**One browser. Shared control.**
+<picture>
+  <source media="(max-width: 620px)" srcset="docs/pages/assets/repository-hero-mobile.svg">
+  <img src="docs/pages/assets/repository-hero.svg" alt="One browser. Shared control. The THESUS workspace shows a sample reservation and a trace of the agent handing control to you.">
+</picture>
 
 THESUS is a local workspace for supervising an agent in Chromium. You and the agent work in the same live browser, with approval for sensitive actions and a SQLite history of decisions and checkpoints. THESUS also supports [evidence-backed artifact investigations](#investigate-an-authorized-artifact).
 
-[Quick start](#start-on-windows) · [Guided demo](#demonstrate-without-model-credentials) · [Project tree](#project-tree) · [Architecture](ARCHITECTURE.md)
+**[Watch the handoff](#the-handoff)** · [Quick start](#start-on-windows) · [Guided demo](#demonstrate-without-model-credentials) · [Project tree](#project-tree) · [Architecture](ARCHITECTURE.md)
+
+| 01 / Control | 02 / Review | 03 / History |
+| --- | --- | --- |
+| **Take the wheel.**<br>Click, type, and scroll in the live browser yourself. Return control in the same session. | **Approve actions.**<br>Inspect proposed clicks, text entry, and form submissions before the agent acts. | **Keep the trail.**<br>Replay recorded activity or fork a checkpoint to explore another path. |
+
+## Start on Windows
+
+Install Python 3.12 or newer, then run these commands from this directory. If a copied `.venv` lacks `Scripts/python.exe`, create a fresh environment such as `.workspace-venv`.
+
+```powershell
+py -3.12 -m venv .workspace-venv
+$workspacePython = '.\.workspace-venv\Scripts\python.exe'
+& $workspacePython -m pip install -r requirements.txt
+& $workspacePython -m playwright install chromium
+$env:BROWSER_BACKEND = 'playwright'
+& $workspacePython main.py
+```
+
+Open [the workspace](http://127.0.0.1:8000). `BROWSER_BACKEND=playwright` overrides `USE_FAKE_BROWSER_ADAPTER` in an older `.env`. The app reads `.env` automatically and gives shell settings precedence. On Linux or macOS use `python3.12 -m venv .workspace-venv` and `.workspace-venv/bin/python` in the equivalent commands. Linux hosts may need `python -m playwright install --with-deps chromium` and working Chromium sandbox support.
 
 ## The handoff
 
@@ -43,21 +65,6 @@ thesus/
 ```
 
 [Browser adapter](app/integrations/browser/playwright_adapter.py) · [Control lock](app/core/control_lock.py) · [Workspace UI](app/ui/) · [Validation](docs/validation.md)
-
-## Start on Windows
-
-Install Python 3.12 or newer, then run these commands from this directory. If a copied `.venv` lacks `Scripts/python.exe`, create a fresh environment such as `.workspace-venv`.
-
-```powershell
-py -3.12 -m venv .workspace-venv
-$workspacePython = '.\.workspace-venv\Scripts\python.exe'
-& $workspacePython -m pip install -r requirements.txt
-& $workspacePython -m playwright install chromium
-$env:BROWSER_BACKEND = 'playwright'
-& $workspacePython main.py
-```
-
-Open [the workspace](http://127.0.0.1:8000). `BROWSER_BACKEND=playwright` overrides `USE_FAKE_BROWSER_ADAPTER` in an older `.env`. The app reads `.env` automatically and gives shell settings precedence. On Linux or macOS use `python3.12 -m venv .workspace-venv` and `.workspace-venv/bin/python` in the equivalent commands. Linux hosts may need `python -m playwright install --with-deps chromium` and working Chromium sandbox support.
 
 ## Demonstrate without model credentials
 
