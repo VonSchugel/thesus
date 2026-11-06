@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agent Browser Workspace</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="identity"><span class="mark" aria-hidden="true">AB</span><h1>Agent Browser</h1></div>
+    <div id="workspace-session-controls" class="session-controls">
+      <label><span>Session</span><select id="session-select"></select></label>
+      <label><span>Branch</span><select id="branch-select"></select></label>
+      <label id="new-session-model-field" hidden><span>New session model</span><select id="new-session-model"></select></label>
+      <button id="new-session-btn">New session</button>
+    </div>
+    <button id="task-groups-btn" type="button" aria-controls="task-groups-view" aria-expanded="false" hidden>Task groups</button>
+    <span id="connection" class="connection" data-state="offline" role="status">Connecting</span>
+  </header>
+
+  <main id="workspace-view" class="workspace">
+    <section class="browser-panel" aria-labelledby="browser-heading">
+      <div class="panel-heading">
+        <div><h2 id="browser-heading">Shared browser</h2><p id="browser-title">Browser view</p></div>
+        <span class="badge" id="owner">Waiting for session</span>
+      </div>
+
+      <div class="browser-shell">
+        <div class="tabs-bar">
+          <div id="browser-tabs" class="browser-tabs" aria-label="Open browser tabs"></div>
+          <button id="new-tab" class="icon-button" type="button" aria-label="New browser tab" title="New tab">+</button>
+        </div>
+        <form class="address-bar" id="address-form">
+          <button id="back" class="icon-button" type="button" aria-label="Go back" title="Back">‹</button>
+          <button id="forward" class="icon-button" type="button" aria-label="Go forward" title="Forward">›</button>
+          <button id="reload" class="icon-button" type="button" aria-label="Reload page" title="Reload">↻</button>
+          <label class="sr-only" for="address">Page address</label>
+          <input id="address" type="text" inputmode="url" autocomplete="off" spellcheck="false" placeholder="Browser address">
+          <button id="navigate" type="submit">Go</button>
+        </form>
+        <div id="viewport" class="viewport" tabindex="0" aria-label="Remote browser viewport" aria-describedby="viewport-help">
+          <div id="viewport-empty" class="viewport-empty">
+            <span class="viewport-symbol" aria-hidden="true">◫</span>
+            <strong id="viewport-title">Start a browsing task</strong>
+            <p id="viewport-description">The live browser will appear here. Take control to browse in the same session.</p>
+            <button id="demo-btn" class="primary" type="button" hidden>Run guided demo</button>
+          </div>
+          <img id="browser-frame" alt="Live view of the shared browser" draggable="false" hidden>
+        </div>
+        <div class="viewport-footer">
+          <p id="viewport-help">Take control to click, type, and scroll in the browser.</p>
+          <div class="viewport-tools">
+            <button id="fit-viewport" type="button" title="Resize the remote browser to fit the view">Fit view</button>
+            <button id="text-btn" type="button">Type text</button>
+            <button id="upload-btn" type="button" title="Stage a file for the shared browser">Stage file</button>
+            <input id="upload-file" type="file" hidden>
+            <button id="artifacts-btn" type="button">Files</button>
+            <button id="close-browser-btn" type="button" title="Close the Chromium context and keep the task history">Close browser</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="control-strip" aria-label="Execution controls">
+        <div class="control-state"><span id="run-status" class="badge" role="status">Idle</span><span id="current-action"></span></div>
+        <div class="control-buttons">
+          <button id="pause-btn">Pause</button>
+          <button id="resume-btn">Resume</button>
+          <button id="takeover-btn" class="primary">Take control</button>
+          <button id="release-btn" class="primary" hidden>Return control</button>
+          <button id="stop-btn" class="danger">Stop task</button>
+        </div>
+      </div>
+      <p id="notice" class="notice" role="status" aria-live="polite" hidden></p>
+    </section>
+
+    <aside class="agent-panel" aria-labelledby="agent-heading">
+      <div class="panel-heading"><div><h2 id="agent-heading">Agent</h2><p id="agent-goal">Instructions and activity</p></div>
+        <button id="history-btn" type="button">History</button>
+      </div>
+      <section id="approval" class="approval" aria-labelledby="approval-title" hidden>
+        <strong id="approval-title">Approval required</strong>
+        <p id="approval-summary"></p>
+        <dl id="approval-details" class="approval-details"></dl>
+        <div class="approval-buttons">
+          <button id="approve-btn" class="primary">Approve action</button>
+          <button id="edit-action-btn">Edit action</button>
+          <button id="reject-btn">Reject</button>
+          <button id="cancel-action-btn">Cancel action</button>
+        </div>
+      </section>
+      <div class="panel-tabs" role="tablist" aria-label="Agent panel">
+        <button id="conversation-tab" role="tab" aria-controls="conversation" aria-selected="true">Conversation</button>
+        <button id="activity-tab" role="tab" aria-controls="activity" aria-selected="false" tabindex="-1">Activity <span id="activity-count"></span></button>
+      </div>
+      <section id="conversation" class="rail-content" role="tabpanel" aria-labelledby="conversation-tab">
+        <div id="chat-list" class="feed" aria-label="Conversation" tabindex="0"></div>
+        <form id="chat-form" class="composer">
+          <label class="sr-only" for="chat-input">Message the agent</label>
+          <textarea id="chat-input" rows="3" placeholder="Give the agent a task or redirect its work…" required></textarea>
+          <div class="composer-actions">
+            <button id="replan-btn" type="button">Replan</button>
+            <button id="send-btn" class="primary" type="submit">Send instruction</button>
+          </div>
+        </form>
+      </section>
+      <section id="activity" class="rail-content" role="tabpanel" aria-labelledby="activity-tab" hidden>
+        <div class="feed-toolbar">
+          <label class="sr-only" for="event-filter">Filter activity</label>
+          <input id="event-filter" type="search" placeholder="Filter by action, actor, or page">
+        </div>
+        <div id="event-list" class="feed" aria-label="Activity" tabindex="0"></div>
+      </section>
+    </aside>
+  </main>
+
+  <main id="task-groups-view" class="task-hub" aria-labelledby="task-groups-heading" hidden>
+    <header class="task-hub-heading">
+      <div><h2 id="task-groups-heading" tabindex="-1">Task groups</h2><p>Run tasks together and open each workspace for browser control or approvals.</p></div>
+      <button id="new-group-btn" class="primary" type="button">New group</button>
+    </header>
+    <div class="task-hub-layout">
+      <aside class="group-library" aria-labelledby="saved-groups-heading">
+        <h3 id="saved-groups-heading">Saved groups</h3>
+        <label><span class="sr-only">Select a task group</span><select id="group-select"></select></label>
+        <p id="group-model-capacity"></p>
+      </aside>
+      <div class="group-content">
+        <p id="group-notice" class="notice" role="status" aria-live="polite" hidden></p>
+        <form id="group-form" class="group-form" hidden>
+          <header><h3>New task group</h3><p>Give each task its own goal and choose the model it should use.</p></header>
+          <label class="group-title-field"><span>Group name <span class="field-optional">optional</span></span><input id="group-title" type="text" maxlength="160" placeholder="Research, compare, and summarize"></label>
+          <div id="group-task-fields" class="group-task-fields"></div>
+          <div class="group-form-actions">
+            <button id="add-group-task-btn" type="button">Add task</button>
+            <button id="start-group-btn" class="primary" type="submit">Start group</button>
+          </div>
+        </form>
+        <section id="group-overview" class="group-overview" aria-labelledby="group-heading" hidden>
+          <header class="group-overview-heading">
+            <div><h3 id="group-heading" tabindex="-1">Group overview</h3><p id="group-counts" role="status" aria-live="polite"></p></div>
+            <div class="group-status"><span id="group-status" class="badge"></span><span id="group-connection" class="connection" data-state="offline">Connecting</span></div>
+          </header>
+          <div id="group-task-results" class="group-task-results"></div>
+        </section>
+      </div>
+    </div>
+  </main>
+  <template id="group-task-template">
+    <fieldset class="group-task-field">
+      <legend class="group-task-legend"></legend>
+      <div class="group-task-settings">
+        <label><span>Task name <span class="field-optional">optional</span></span><input class="group-task-title" type="text" maxlength="160" placeholder="Find pricing"></label>
+        <label><span>Model</span><select class="group-task-model"></select></label>
+      </div>
+      <label><span>Goal</span><textarea class="group-task-goal" rows="3" maxlength="12000" placeholder="Open a specific address and describe what to find or do…" required></textarea></label>
+      <button class="group-task-remove" type="button">Remove task</button>
+    </fieldset>
+  </template>
+
+  <dialog id="history-dialog" aria-labelledby="history-title">
+    <header><div><h2 id="history-title">Branch history</h2><p>Review the execution and branch from a checkpoint.</p></div><form method="dialog"><button aria-label="Close history">Close</button></form></header>
+    <div class="history-actions">
+      <label><span>Checkpoint</span><select id="checkpoint-select"></select></label>
+      <button id="snapshot-btn">Save checkpoint</button>
+      <button id="branch-btn" class="primary">Create branch</button>
+    </div>
+    <p id="history-notice" class="notice" role="status" hidden></p>
+    <div id="replay-list" class="history-feed"></div>
+  </dialog>
+  <dialog id="artifacts-dialog" aria-labelledby="artifacts-title">
+    <header><div><h2 id="artifacts-title">Browser files</h2><p>Files stored for this branch.</p></div><form method="dialog"><button aria-label="Close browser files">Close</button></form></header>
+    <div id="artifact-list" class="history-feed"></div>
+  </dialog>
+  <dialog id="text-dialog" aria-labelledby="text-title">
+    <header><div><h2 id="text-title">Type in browser</h2><p>Text goes to the focused field in the shared browser.</p></div><form method="dialog"><button>Close</button></form></header>
+    <form id="text-form" class="composer">
+      <label class="sr-only" for="remote-text">Text to type</label>
+      <textarea id="remote-text" rows="4" maxlength="8192" autocomplete="off" required autofocus></textarea>
+      <div class="composer-actions"><button class="primary" type="submit">Type text</button></div>
+    </form>
+  </dialog>
+  <dialog id="edit-action-dialog" aria-labelledby="edit-action-title">
+    <header><div><h2 id="edit-action-title">Edit pending action</h2><p>The revised action will require a new approval.</p></div><form method="dialog"><button>Close</button></form></header>
+    <form id="edit-action-form" class="composer">
+      <label class="sr-only" for="edit-action-input">Browser command as JSON</label>
+      <textarea id="edit-action-input" rows="7" maxlength="12000" spellcheck="false" required></textarea>
+      <p id="edit-action-notice" class="notice" role="status" hidden></p>
+      <div class="composer-actions"><button class="primary" type="submit">Request new approval</button></div>
+    </form>
+  </dialog>
+</body>
+</html>

@@ -1,0 +1,29 @@
+﻿from __future__ import annotations
+
+from collections.abc import Awaitable, Callable
+from typing import Protocol
+
+from app.models.domain import BrowserLiveState, NavigationStepResult, PlannedAction, SessionContext, SnapshotResult, Subtask
+
+
+BeforeActionHook = Callable[[PlannedAction], Awaitable[bool]]
+
+
+class BrowserAdapter(Protocol):
+    async def start(self, session_ctx: SessionContext) -> None: ...
+    async def ensure_browser(self, session_ctx: SessionContext) -> None: ...
+    async def run_navigation_step(
+        self,
+        *,
+        session_ctx: SessionContext,
+        subtask: Subtask,
+        step_index: int,
+        before_action: BeforeActionHook | None = None,
+    ) -> NavigationStepResult: ...
+    async def execute_action(self, *, session_ctx: SessionContext, action: PlannedAction, step_index: int) -> NavigationStepResult: ...
+    async def pause(self, session_ctx: SessionContext) -> None: ...
+    async def resume(self, session_ctx: SessionContext) -> None: ...
+    async def get_state(self, session_ctx: SessionContext) -> BrowserLiveState: ...
+    async def capture_snapshot(self, session_ctx: SessionContext) -> SnapshotResult: ...
+    async def close(self, session_ctx: SessionContext) -> None: ...
+

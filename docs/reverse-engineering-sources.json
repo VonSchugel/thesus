@@ -1,0 +1,526 @@
+{
+  "schema_version": 1,
+  "project": "THESUS",
+  "entries": [
+    {
+      "id": "rea",
+      "project": "REA",
+      "category": "artifact orchestration",
+      "url": "https://github.com/morluto/rea",
+      "architecture": "Node/TypeScript CLI and MCP compose providers, artifacts, Evidence and bounded retained references.",
+      "capabilities": "Local shipped CLI returned a source-located JavaScript application graph on the fixture.",
+      "limitations": "Native and runtime coverage depends on providers, host, and permissions. Directly embedding the server widens the integration surface.",
+      "evidence": [
+        "https://github.com/morluto/rea/tree/a93eb39698e6aa2cec86e26e7e9a4b74d3d7a6c2",
+        "https://github.com/morluto/rea/blob/a93eb39698e6aa2cec86e26e7e9a4b74d3d7a6c2/src/server/EvidenceMcpServerCore.ts",
+        "https://github.com/morluto/rea/blob/a93eb39698e6aa2cec86e26e7e9a4b74d3d7a6c2/tests/boundary/mcp/retainedApplicationEvidenceMcp.test.ts",
+        "https://www.npmjs.com/package/rea-agents/v/6.8.0"
+      ],
+      "activity": "npm 6.8.0 published 2026-10-25. Source HEAD sampled 2026-11-06.",
+      "license": "MIT core. External engines have separate terms.",
+      "relevance": "External benchmark and future scoped provider. Use digest, coverage and observation/inference patterns.",
+      "decision": "adapt",
+      "confidence": "high for inspected and executed JS path",
+      "accessed": "2026-11-06",
+      "version": "6.8.0",
+      "commit": "a93eb39698e6aa2cec86e26e7e9a4b74d3d7a6c2"
+    },
+    {
+      "id": "leanrea",
+      "project": "leanrea",
+      "category": "CLI-first agent guidance",
+      "url": "https://github.com/aicodeking/leanrea",
+      "architecture": "Skill routes the host agent to existing CLI commands. Python harness compares arms.",
+      "capabilities": "Published results and raw harness for four tasks and three repetitions per arm per task.",
+      "limitations": "Small author-run macOS experiment with one model and partly regex scoring. No managed investigation store.",
+      "evidence": [
+        "https://github.com/aicodeking/leanrea/blob/09ba4aa0217f82cd880f855a60b877f59f39b22b/leanrea/SKILL.md",
+        "https://github.com/aicodeking/leanrea/blob/09ba4aa0217f82cd880f855a60b877f59f39b22b/bench/BENCHMARK.md"
+      ],
+      "activity": "Source HEAD commit dated 2026-10-17.",
+      "license": "MIT",
+      "relevance": "Keep a small exposed tool set and non-agentic baseline.",
+      "decision": "adapt",
+      "confidence": "high for implementation, moderate for reported comparative results",
+      "accessed": "2026-11-06",
+      "commit": "09ba4aa0217f82cd880f855a60b877f59f39b22b"
+    },
+    {
+      "id": "era",
+      "project": "ERA Agent",
+      "category": "REA-derived investigation workflow",
+      "url": "https://github.com/dav1dngy/era-agent",
+      "architecture": "Node ReaClient invokes REA CLI and records outputs. ProjectStore, review and candidate isolation layers manage multi-step runs.",
+      "capabilities": "Source shows subprocess management, project and run persistence, and a candidate work boundary.",
+      "limitations": "Platform-dependent isolation. Candidate execution and improvement need independent authorization and verification.",
+      "evidence": [
+        "https://github.com/dav1dngy/era-agent/blob/68ad521eb5036d6731d6a373f625a6e6f3e40658/src/rea_integration/rea-client.js",
+        "https://github.com/dav1dngy/era-agent/blob/68ad521eb5036d6731d6a373f625a6e6f3e40658/src/project_lab/store.js",
+        "https://github.com/dav1dngy/era-agent/blob/68ad521eb5036d6731d6a373f625a6e6f3e40658/src/safety/candidate-sandbox.js"
+      ],
+      "activity": "HEAD commit dated 2026-10-14.",
+      "license": "MIT with upstream notices",
+      "relevance": "Persist explicit run steps and allow human review. Defer the improvement lab.",
+      "decision": "adapt",
+      "confidence": "high for pinned source, untested in THESUS",
+      "accessed": "2026-11-06",
+      "commit": "68ad521eb5036d6731d6a373f625a6e6f3e40658"
+    },
+    {
+      "id": "awesome-rea",
+      "project": "Awesome Reverse Engineer Anything",
+      "category": "curated cases and discovery",
+      "url": "https://github.com/AIshihzong/awesome-reverse-engineer-anything",
+      "architecture": "Maintained case list and attribution taxonomy with validation scripts.",
+      "capabilities": "Finds community leads and differentiates reported REA use from adjacent projects.",
+      "limitations": "Case summaries and X claims need original-source verification.",
+      "evidence": [
+        "https://github.com/AIshihzong/awesome-reverse-engineer-anything/tree/3e74bb397ee3a0352f851343ceafdd67f0906f32",
+        "https://github.com/AIshihzong/awesome-reverse-engineer-anything/blob/3e74bb397ee3a0352f851343ceafdd67f0906f32/docs/is-it-rea.md"
+      ],
+      "activity": "HEAD merge dated 2026-11-05.",
+      "license": "See pinned LICENSE before reusing compilation.",
+      "relevance": "Discovery and cross-checking.",
+      "decision": "study",
+      "confidence": "high for catalog structure, case attribution varies",
+      "accessed": "2026-11-06",
+      "commit": "3e74bb397ee3a0352f851343ceafdd67f0906f32"
+    },
+    {
+      "id": "capstone",
+      "project": "Capstone",
+      "category": "native instruction decoding",
+      "url": "https://github.com/capstone-engine/capstone",
+      "architecture": "Native instruction engine with Python bindings and lightweight disassembly iterator.",
+      "capabilities": "Decoded known x86-64 and AArch64 instructions in the local trial.",
+      "limitations": "Requires architecture and mode, and does not recover function boundaries or prove reachability.",
+      "evidence": [
+        "https://pypi.org/project/capstone/5.0.9/",
+        "https://github.com/capstone-engine/capstone/tree/5.0.9/bindings/python",
+        "https://crates.io/crates/capstone"
+      ],
+      "activity": "Windows wheel published 2026-05-28.",
+      "license": "BSD 3-Clause core. Review notices for distribution.",
+      "relevance": "Bounded native entry inspection.",
+      "decision": "integrate",
+      "confidence": "high",
+      "accessed": "2026-11-06",
+      "version": "5.0.9"
+    },
+    {
+      "id": "pefile",
+      "project": "pefile",
+      "category": "Windows executable format",
+      "url": "https://github.com/erocarrera/pefile",
+      "architecture": "Python PE parser with fast-load and selective directory inspection.",
+      "capabilities": "Headers, sections, image base and data directory metadata.",
+      "limitations": "No decompilation. Treat partial and malformed mappings conservatively.",
+      "evidence": [
+        "https://github.com/erocarrera/pefile/blob/v2024.8.26/pefile.py",
+        "https://pypi.org/project/pefile/2024.8.26/",
+        "https://learn.microsoft.com/en-us/windows/win32/debug/pe-format"
+      ],
+      "activity": "Release pin 2024.8.26. Newer development was outside the local trial.",
+      "license": "MIT",
+      "relevance": "Translate file-backed entry RVA and identify a declared CLR directory.",
+      "decision": "integrate",
+      "confidence": "high for source and local imports",
+      "accessed": "2026-11-06",
+      "version": "2024.8.26"
+    },
+    {
+      "id": "pyelftools",
+      "project": "pyelftools",
+      "category": "ELF and DWARF parsing",
+      "url": "https://github.com/eliben/pyelftools",
+      "architecture": "Pure Python file and segment readers.",
+      "capabilities": "Provided program headers and executable entry mappings in local ELF trials.",
+      "limitations": "No disassembly or proof of semantic behavior.",
+      "evidence": [
+        "https://pypi.org/project/pyelftools/0.33/",
+        "https://github.com/eliben/pyelftools/blob/v0.33/elftools/elf/elffile.py",
+        "https://gabi.xinuos.com/elf/07-pheader.html"
+      ],
+      "activity": "Wheel published 2026-05-29.",
+      "license": "Public Domain per PyPI",
+      "relevance": "Map ELF entry addresses to byte ranges.",
+      "decision": "integrate",
+      "confidence": "high",
+      "accessed": "2026-11-06",
+      "version": "0.33"
+    },
+    {
+      "id": "tree-sitter",
+      "project": "Tree-sitter JavaScript",
+      "category": "structured syntax recovery",
+      "url": "https://github.com/tree-sitter/tree-sitter-javascript",
+      "architecture": "Tree-sitter parser and JavaScript grammar with Python wheels.",
+      "capabilities": "Local fixtures yielded literal imports and IPC call locations.",
+      "limitations": "Dynamic dispatch, aliases, obfuscation and runtime reachability need additional work.",
+      "evidence": [
+        "https://github.com/tree-sitter/py-tree-sitter/tree/v0.25.2",
+        "https://github.com/tree-sitter/tree-sitter-javascript/tree/v0.25.0",
+        "https://pypi.org/project/tree-sitter-javascript/0.25.0/"
+      ],
+      "activity": "Grammar wheel published 2025-09-01.",
+      "license": "MIT",
+      "relevance": "Static ZIP and JavaScript inspection.",
+      "decision": "integrate",
+      "confidence": "high",
+      "accessed": "2026-11-06",
+      "version": "0.25.0"
+    },
+    {
+      "id": "ghidra",
+      "project": "Ghidra and PyGhidra",
+      "category": "native decompiler and analysis",
+      "url": "https://github.com/NationalSecurityAgency/ghidra",
+      "architecture": "Java application, P-code and headless import/analyze/script lifecycle, with a Python bridge.",
+      "capabilities": "Documented batch analysis and project management.",
+      "limitations": "Requires pinned Java/Ghidra pair and private scratch. Decompilation quality and local throughput unmeasured.",
+      "evidence": [
+        "https://github.com/NationalSecurityAgency/ghidra/releases/tag/Ghidra_12.1.3_build",
+        "https://github.com/NationalSecurityAgency/ghidra/blob/Ghidra_12.1.3_build/Ghidra/RuntimeScripts/support/analyzeHeadlessREADME.md"
+      ],
+      "activity": "12.1.3 release inspected. Main documentation refers to a different Java baseline.",
+      "license": "Apache-2.0 core with third-party notices.",
+      "relevance": "Candidate for real function discovery and decompilation.",
+      "decision": "study",
+      "confidence": "high for documented behavior",
+      "accessed": "2026-11-06",
+      "version": "12.1.3"
+    },
+    {
+      "id": "ghidramcp",
+      "project": "GhidraMCP",
+      "category": "analysis interoperability",
+      "url": "https://github.com/LaurieWired/GhidraMCP",
+      "architecture": "Ghidra integration exports analysis methods via MCP. Releases distinguish legacy bridge and newer headless flow.",
+      "capabilities": "Documented static queries and annotation support.",
+      "limitations": "MCP is a transport. Scope mutation and project ownership separately. No local run.",
+      "evidence": [
+        "https://github.com/LaurieWired/GhidraMCP/releases",
+        "https://github.com/bethington/ghidra-mcp/tree/main/src/main/java"
+      ],
+      "activity": "v2 line reviewed with separate current bridge alternative.",
+      "license": "Apache-2.0 for LaurieWired project. Check other bridge independently.",
+      "relevance": "Trial read-only allowlist after selecting isolated engine.",
+      "decision": "study",
+      "confidence": "medium",
+      "accessed": "2026-11-06",
+      "version": "2.0"
+    },
+    {
+      "id": "ida-mcp",
+      "project": "IDA Pro MCP",
+      "category": "licensed native analysis connector",
+      "url": "https://github.com/mrexodia/ida-pro-mcp",
+      "architecture": "Python server around IDA database and decompiler, with attached and headless modes.",
+      "capabilities": "Source exposes native analysis and database operations.",
+      "limitations": "Proprietary IDA runtime, platform compatibility and writable databases require separate controls.",
+      "evidence": [
+        "https://github.com/mrexodia/ida-pro-mcp/tree/main/src/ida_pro_mcp",
+        "https://github.com/mrexodia/ida-pro-mcp/releases"
+      ],
+      "activity": "Source and release history checked. No runtime trial.",
+      "license": "Bridge license distinct from proprietary IDA and decompiler terms.",
+      "relevance": "Optional bring-your-own alternative.",
+      "decision": "study",
+      "confidence": "medium",
+      "accessed": "2026-11-06"
+    },
+    {
+      "id": "binaryninja",
+      "project": "Binary Ninja",
+      "category": "native analysis API",
+      "url": "https://github.com/Vector35/binaryninja-api",
+      "architecture": "Published BinaryView and multiple intermediate languages around the licensed core.",
+      "capabilities": "Documented IL and Python API for program analysis.",
+      "limitations": "Native engine entitlement and operational licensing are prerequisites.",
+      "evidence": [
+        "https://github.com/Vector35/binaryninja-api/tree/dev/python",
+        "https://docs.binary.ninja/dev/bnil-overview.html"
+      ],
+      "activity": "Development API and documentation inspected.",
+      "license": "Open API files and proprietary core have separate terms.",
+      "relevance": "Optional semantic comparison engine.",
+      "decision": "study",
+      "confidence": "medium",
+      "accessed": "2026-11-06"
+    },
+    {
+      "id": "radare2-r2ai",
+      "project": "radare2 and r2ai",
+      "category": "command-driven and agent-assisted analysis",
+      "url": "https://github.com/radareorg/r2ai",
+      "architecture": "Command/plugin host with model-assisted decompilation and a tool-using mode.",
+      "capabilities": "Implementation and conference material describe tool-based reasoning with available decompilers.",
+      "limitations": "Broad commands require isolation and allowlisting. Network and inference costs vary.",
+      "evidence": [
+        "https://github.com/radareorg/r2ai/tree/master/src",
+        "https://radare.org/get/r2ai-hackbcn2025.pdf"
+      ],
+      "activity": "Maintainer source and 2025 conference work checked.",
+      "license": "Verify radare2 and r2ai licenses separately before redistribution.",
+      "relevance": "Reference for scoped routing and optional compact native command profiles.",
+      "decision": "study",
+      "confidence": "medium",
+      "accessed": "2026-11-06"
+    },
+    {
+      "id": "rizin",
+      "project": "Rizin and Cutter",
+      "category": "native analysis fork",
+      "url": "https://github.com/rizinorg/rizin",
+      "architecture": "Radare2 lineage, with RzArch consolidation and RzIL lifter and VM work.",
+      "capabilities": "v0.9 releases document new and migrated architecture plugins, with Cutter GUI on Rizin.",
+      "limitations": "Ongoing API migration. Test command shapes and IL coverage on chosen architecture.",
+      "evidence": [
+        "https://rizin.re/posts/announcing-rizin/",
+        "https://github.com/rizinorg/rizin/releases/tag/v0.9.0",
+        "https://github.com/rizinorg/rizin/blob/v0.9.1/librz/il/README.md"
+      ],
+      "activity": "v0.9.1 release inspected.",
+      "license": "Review Rizin LGPL and bundled plugin terms. Cutter is a separate distribution.",
+      "relevance": "Substantive fork to compare for native analysis.",
+      "decision": "study",
+      "confidence": "high for release changes",
+      "accessed": "2026-11-06",
+      "version": "0.9.1"
+    },
+    {
+      "id": "lief",
+      "project": "LIEF",
+      "category": "cross-format parsing",
+      "url": "https://github.com/lief-project/LIEF",
+      "architecture": "C++ file parsers and bindings for several executable formats.",
+      "capabilities": "Source includes PE, ELF and Mach-O manipulation.",
+      "limitations": "Native parser surface, broader dependency and no local trial.",
+      "evidence": [
+        "https://github.com/lief-project/LIEF/tree/main/src",
+        "https://github.com/lief-project/LIEF/releases"
+      ],
+      "activity": "Source and releases sampled.",
+      "license": "Apache-2.0 core. Verify distribution notices.",
+      "relevance": "Potential replacement when wider binary coverage justifies it.",
+      "decision": "study",
+      "confidence": "medium",
+      "accessed": "2026-11-06"
+    },
+    {
+      "id": "jadx",
+      "project": "JADX",
+      "category": "Android DEX and APK decompilation",
+      "url": "https://github.com/skylot/jadx",
+      "architecture": "JVM parser and decompiler with a documented plugin API.",
+      "capabilities": "DEX/APK analysis and source-like Java output are documented.",
+      "limitations": "Output is incomplete on some inputs. Mobile runtime and native libraries need separate lanes.",
+      "evidence": [
+        "https://github.com/skylot/jadx/blob/master/jadx-core/src/main/java/jadx/api/JadxDecompiler.java",
+        "https://github.com/skylot/jadx/releases"
+      ],
+      "activity": "Source and release history sampled.",
+      "license": "Apache-2.0",
+      "relevance": "First deeper static Android candidate.",
+      "decision": "study",
+      "confidence": "medium",
+      "accessed": "2026-11-06"
+    },
+    {
+      "id": "ilspy",
+      "project": "ILSpy",
+      "category": "managed assembly decompilation",
+      "url": "https://github.com/icsharpcode/ILSpy",
+      "architecture": "Managed metadata and IL readers, CSharpDecompiler and CLI.",
+      "capabilities": "Documented/source-backed C# reconstruction of supported managed programs.",
+      "limitations": "NativeAOT and obfuscated or mixed-mode artifacts require separate handling.",
+      "evidence": [
+        "https://github.com/icsharpcode/ILSpy/blob/master/ICSharpCode.Decompiler/CSharp/CSharpDecompiler.cs",
+        "https://github.com/icsharpcode/ILSpy/releases"
+      ],
+      "activity": "Source and release history sampled.",
+      "license": "MIT",
+      "relevance": "Candidate for verified managed IL inspection.",
+      "decision": "study",
+      "confidence": "medium",
+      "accessed": "2026-11-06"
+    },
+    {
+      "id": "firmware",
+      "project": "Unblob and Binwalk",
+      "category": "firmware identification and extraction",
+      "url": "https://unblob.org/",
+      "architecture": "Signature and format handlers identify ranges and delegate extraction. Binwalk v3 is Rust.",
+      "capabilities": "Projects expose chunk analysis and optional extraction.",
+      "limitations": "Resource, containment and recursion risks. Need isolated workers and exact fixtures.",
+      "evidence": [
+        "https://github.com/onekey-sec/unblob/tree/main/unblob/handlers",
+        "https://github.com/ReFirmLabs/binwalk/tree/master/src"
+      ],
+      "activity": "Current source trees sampled, no runtime trial.",
+      "license": "Review each repository and external extractor licenses.",
+      "relevance": "Future bounded firmware region evidence.",
+      "decision": "study",
+      "confidence": "medium",
+      "accessed": "2026-11-06"
+    },
+    {
+      "id": "wireshark",
+      "project": "Wireshark and TShark",
+      "category": "offline protocol decoding",
+      "url": "https://gitlab.com/wireshark/wireshark",
+      "architecture": "Protocol dissectors and a command-line capture reader.",
+      "capabilities": "Source-backed offline packet decoding.",
+      "limitations": "Capture may contain credentials or personal data. Decode under resource controls.",
+      "evidence": [
+        "https://gitlab.com/wireshark/wireshark/-/blob/master/tshark.c",
+        "https://www.wireshark.org/docs/man-pages/tshark.html"
+      ],
+      "activity": "GitLab project and source accessible.",
+      "license": "GPL family. Check distributions and plugins.",
+      "relevance": "Offline PCAP follow-up after HAR validation.",
+      "decision": "study",
+      "confidence": "medium",
+      "accessed": "2026-11-06"
+    },
+    {
+      "id": "frida-cdp",
+      "project": "Frida and Chrome DevTools Protocol",
+      "category": "runtime instrumentation",
+      "url": "https://frida.re/",
+      "architecture": "Frida injects instrumentation through supported bindings. CDP provides browser target, runtime and network interfaces.",
+      "capabilities": "Primary API references document attach, callbacks and browser event streams.",
+      "limitations": "Dynamic operations can change target behavior or expose credentials. No runtime attach trial.",
+      "evidence": [
+        "https://frida.re/docs/javascript-api/",
+        "https://chromedevtools.github.io/devtools-protocol/tot/Network/"
+      ],
+      "activity": "Current API pages sampled.",
+      "license": "Review Frida component license and Chromium protocol source license.",
+      "relevance": "Future isolated runtime observation and retained trace adapters.",
+      "decision": "study",
+      "confidence": "medium",
+      "accessed": "2026-11-06"
+    },
+    {
+      "id": "mcp",
+      "project": "Model Context Protocol Python SDK",
+      "category": "tool transport",
+      "url": "https://github.com/modelcontextprotocol/python-sdk",
+      "architecture": "Python MCPServer and Client support current and legacy protocol patterns.",
+      "capabilities": "Local stdio evidence bridge uses SDK 2.3.0.",
+      "limitations": "Protocol discovery and tool annotations do not grant authority. Bridge exposes retained evidence only.",
+      "evidence": [
+        "https://pypi.org/project/mcp/2.3.0/",
+        "https://modelcontextprotocol.io/specification/2026-07-28/changelog",
+        "https://github.com/modelcontextprotocol/python-sdk/releases"
+      ],
+      "activity": "2.3.0 installed and used locally.",
+      "license": "MIT",
+      "relevance": "Read-only local tool interoperability.",
+      "decision": "integrate",
+      "confidence": "high",
+      "accessed": "2026-11-06",
+      "version": "2.3.0"
+    },
+    {
+      "id": "angr",
+      "project": "angr",
+      "category": "symbolic execution",
+      "url": "https://github.com/angr/angr",
+      "architecture": "Project and simulation manager schedule execution states and exploration techniques.",
+      "capabilities": "Pinned operation concepts visible in public implementation and examples.",
+      "limitations": "Path explosion and modeled environment can make results partial. Local solve trial deferred.",
+      "evidence": [
+        "https://github.com/angr/angr/blob/master/angr/sim_manager.py",
+        "https://docs.angr.io/en/latest/examples.html"
+      ],
+      "activity": "Current source sampled.",
+      "license": "BSD 2-Clause core. Check dependencies and solvers.",
+      "relevance": "Generate and replay bounded witness inputs.",
+      "decision": "study",
+      "confidence": "medium",
+      "accessed": "2026-11-06"
+    },
+    {
+      "id": "rebench",
+      "project": "REBENCH",
+      "category": "stripped binary evaluation",
+      "url": "https://arxiv.org/abs/2604.27319",
+      "architecture": "Procedural corpus and evaluation for types and names.",
+      "capabilities": "Paper and downloadable experimental artifacts support controlled build comparisons.",
+      "limitations": "Large artifacts and task design differences. No local reproduction.",
+      "evidence": [
+        "https://arxiv.org/abs/2604.27319",
+        "https://zenodo.org/records/19899116"
+      ],
+      "activity": "2026 extended paper and deposit.",
+      "license": "Review dataset and per-artifact terms.",
+      "relevance": "Use disjoint builds for precision/recall and contamination control.",
+      "decision": "study",
+      "confidence": "moderate, author-reported",
+      "accessed": "2026-11-06"
+    },
+    {
+      "id": "decompilebench",
+      "project": "DecompileBench and LLM4Decompile",
+      "category": "reconstruction and verification",
+      "url": "https://aclanthology.org/2025.findings-acl.1194/",
+      "architecture": "Runtime-aware evaluation of function reconstruction. Separate open-source decompilation model projects provide baselines.",
+      "capabilities": "Publication reports both structural and runtime evaluation.",
+      "limitations": "A judge and passing inputs do not prove equivalence. No local LLM benchmark.",
+      "evidence": [
+        "https://aclanthology.org/2025.findings-acl.1194/",
+        "https://github.com/albertan017/LLM4Decompile"
+      ],
+      "activity": "2025 ACL Findings paper and implementation source.",
+      "license": "Check paper, dataset, model and artifact licenses independently.",
+      "relevance": "Build explicit independent behavioral oracles before synthesis.",
+      "decision": "study",
+      "confidence": "moderate, author-reported",
+      "accessed": "2026-11-06"
+    },
+    {
+      "id": "agentre",
+      "project": "AgentRE-Bench and SRE-Bench",
+      "category": "long-horizon reverse-engineering evaluations",
+      "url": "https://github.com/agentrebench/AgentRE-Bench",
+      "architecture": "Fixture tasks, tool budgets, evaluators and provider-specific harnesses.",
+      "capabilities": "Public code and documented evaluation procedures for stripped binaries.",
+      "limitations": "Tool budgets and task types differ. THESUS did not run the published suites.",
+      "evidence": [
+        "https://github.com/agentrebench/AgentRE-Bench/tree/c0f5fa5b5c1447ce2cc764b96365bc9fed0cbf01",
+        "https://daplab.cs.columbia.edu/benchmarks/sre-bench/"
+      ],
+      "activity": "AgentRE source HEAD pinned. SRE-Bench author page sampled.",
+      "license": "Review harness, dataset and artifact terms before reuse.",
+      "relevance": "Hold out fixtures and score tools separately from model reasoning.",
+      "decision": "study",
+      "confidence": "moderate, author-reported",
+      "accessed": "2026-11-06",
+      "commit": "c0f5fa5b5c1447ce2cc764b96365bc9fed0cbf01"
+    },
+    {
+      "id": "community",
+      "project": "Hacker News, Reddit, X leads and PlxNative",
+      "category": "practitioner evidence",
+      "url": "https://news.ycombinator.com/item?id=50058850",
+      "architecture": "Public threads and linked compatibility implementation.",
+      "capabilities": "Discussion highlights scope and evidence retention. PlxNative provides a working-source lead.",
+      "limitations": "Anecdotes are not independent benchmarks. A sampled X link returned 403.",
+      "evidence": [
+        "https://news.ycombinator.com/item?id=50058850",
+        "https://news.ycombinator.com/item?id=48901763",
+        "https://www.reddit.com/r/ghidra/comments/1r3xaaj/ghidramcp/",
+        "https://github.com/GLinnik21/plx-native",
+        "https://x.com/dotey/status/2109151666020794711"
+      ],
+      "activity": "Public sources reviewed 2026-11-06.",
+      "license": "Discussion terms and project license separate. No content reused.",
+      "relevance": "Generate hypotheses about large result handling and integration friction.",
+      "decision": "study",
+      "confidence": "low for causal or performance claims",
+      "accessed": "2026-11-06"
+    }
+  ]
+}

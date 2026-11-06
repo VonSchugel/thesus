@@ -1,0 +1,10 @@
+.env
+.venv/
+ai/
+aivenv/
+.pytest_cache/
+__pycache__/
+*.pyc
+data/
+.workspace-venv/
+.tmp_pkg/
