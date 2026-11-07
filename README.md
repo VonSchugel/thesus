@@ -152,3 +152,16 @@ Use one Uvicorn worker with persistent local volumes for SQLite and the profiles
 See [architecture](ARCHITECTURE.md), [research and selection](docs/research.md), [validation](docs/validation.md), and [optimization](docs/optimization.md) for operating constraints, test procedures, and measurements.
 
 The [adversarial audit](docs/adversarial-audit.md) documents the corrected control, snapshot and recovery cases, along with the remaining security boundary for unattended authenticated sites.
+
+## Project site
+
+Preview the interactive handoff from the project directory.
+
+```sh
+python -m http.server 4173 --bind 127.0.0.1 --directory docs/pages
+```
+
+Open [the project site preview](http://127.0.0.1:4173/).
+
+To publish, choose **GitHub Actions** as the source under **Settings → Pages**. Once the workflow is on the default branch, run **Publish project site** from the **Actions** tab. The workflow publishes only `docs/pages`.
+
