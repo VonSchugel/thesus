@@ -253,3 +253,16 @@ On macOS or Linux, run `./.workspace-venv/bin/python -m pytest -q`. See the [val
 Use one Uvicorn worker with persistent local volumes for SQLite and browser profiles. Use HTTPS, set a workspace access token and trusted host allowlist, and keep Chromium behind a network boundary that blocks access to local infrastructure. Disable proxy buffering for the event stream. Keep the service and browsers isolated from personal profiles and host credentials. A workspace token grants access to every session in its instance. Use separate instances and volumes for unrelated users.
 
 See the [architecture](ARCHITECTURE.md), [research and selection notes](docs/research.md), [performance measurements](docs/optimization.md), and [adversarial audit](docs/adversarial-audit.md) for operating limits and test evidence.
+
+## Project site
+
+Preview the interactive handoff from the project directory.
+
+```sh
+python -m http.server 4173 --bind 127.0.0.1 --directory docs/pages
+```
+
+Open [the project site preview](http://127.0.0.1:4173/).
+
+To publish, choose **GitHub Actions** as the source under **Settings → Pages**. Once the workflow is on the default branch, run **Publish project site** from the **Actions** tab. The workflow publishes only `docs/pages`.
+
