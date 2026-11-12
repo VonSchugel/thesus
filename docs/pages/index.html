@@ -111,7 +111,7 @@
           <span>Windows / PowerShell</span>
           <button type="button" id="copy-setup" hidden>Copy commands</button>
         </div>
-        <pre tabindex="0" aria-label="Windows setup commands"><code id="setup-commands">py -3 -m venv .workspace-venv
+        <pre tabindex="0" aria-label="Windows setup commands"><code id="setup-commands">py -3.12 -m venv .workspace-venv
 $workspacePython = '.\.workspace-venv\Scripts\python.exe'
 &amp; $workspacePython -m pip install -r requirements.txt
 &amp; $workspacePython -m playwright install chromium

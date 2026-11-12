@@ -60,11 +60,6 @@ function showStep(step, confirmed = step === 2) {
       { duration: 230, easing: 'ease-out' },
     );
   }
-
-  if (editing) {
-    nameInput.focus();
-    nameInput.select();
-  }
 }
 
 stepButtons.forEach((button, index) => {
@@ -77,6 +72,8 @@ stepButtons.forEach((button, index) => {
 action.addEventListener('click', () => {
   if (currentStep === 0) {
     showStep(1);
+    nameInput.focus();
+    nameInput.select();
   } else if (currentStep === 1) {
     showStep(2);
   } else {
